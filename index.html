@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Node-Weather App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital@1&display=swap" rel="stylesheet">
+    <style>
+        body{
+            height: 95vh;
+            background: url(https://user-images.githubusercontent.com/64728986/124381800-033d4a00-dce2-11eb-8491-f17cd8674c98.jpg);
+            background-repeat: no-repeat;
+  background-size: 100% 100%;
+            margin: 0;
+            overflow: scroll;
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+            -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+        }
+        .weather{
+          
+              border:1px solid black;
+            border-radius: 5px;
+            width:300px;
+            height:auto;
+            text-align: center;
+            padding: 10px;
+            margin: auto;  
+            display: hidden;
+        }
+        h1{
+            font-size: 50px;
+            margin-bottom: 0px;
+        }
+        .main-text{
+            font-size: 18px;
+        }
+        .desc-text{
+            padding: 0px 20px;
+        }
+        #error{
+            color:red;
+            font-weight: bold;
+        }
+        form{
+            margin-bottom: 25px;
+        }
+        input{
+            width:220px;
+            padding: 8px;
+            font-size: 18px;
+            border-radius: 3px;
+            border-right: none;
+            border: 1px solid black;
+            margin: 0;
+        }
+        
+        button{
+            width:80px;
+            margin: 0px;
+            padding: 8px;
+            background-color: #fff;
+            border-radius:3px;
+            border:1px solid black;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        .weather>h3{
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="img">   
+    </div>
+    <h1>Weather</h1>
+
+    <p class="main-text">Use this site to get the current weather!</p>
+    <form action="">
+        <input type="text" placeholder="Location" id='location'>
+        <button>Search</button>
+    </form>
+    <h2 id="error">Errror loading weather!</h2>
+   
+
+
+    <p id="messageOne" class="desc-text">Currently weather is Haze And the Temperature is 36 and it feels like 42</p>
+    <p id='messageTwo' class="desc-text">Location: Manipal University Jaipur, Village & Post-Dehmi Kalan, Near Hotel Highway King, Jaipur, Rajasthan, India</p>
+
+        
+
+    <div class="weather">    
+        <h3>More About Your Search.</h3>
+        <b>
+        <p id="wind_speed">Wind speed:45</p>
+        <p id="wind_dir">Wind Directon: WNW</p>
+        <p id="precip"> Preciptation:2121</p>
+        <p id="humidity">Humidity:45</p>
+        <p id="wind_degree">Wind degree 45</p>
+        <p id="local_time"> Local Time: 67129</p> 
+        <p id="time_zone"> Time Zone: mumbai/kolkata</p>
+        </b> 
+
+    </div>
+</body>
+</html>
