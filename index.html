@@ -28,7 +28,7 @@ input[type=number] {
             <div id="inputFormRow">
                 <div class="input-group mb-3">
                     <input type="text" name="itemname[]" class="form-control m-input" placeholder="Enter name" autocomplete="off" >
-                    <input type="text" name="price[]" class="form-control m-input" placeholder="Enter price" autocomplete="off" pattern="\d*" title="price should contain numbers">
+                    <input type="number" name="price[]" class="form-control m-input" placeholder="Enter price" autocomplete="off" pattern="\d*" title="price should contain numbers">
                     <input type="number" name="quantity[]" class="form-control m-input" placeholder="Enter quantity" autocomplete="off" pattern="\d*" title="quantity should contain numbers">
                     <div class="input-group-append">                
                     </div>
@@ -56,7 +56,7 @@ input[type=number] {
         html += '<div id="inputFormRow">';
         html += '<div class="input-group mb-3">';
         html += ` <input type="text" name="itemname[]" class="form-control m-input" placeholder="Enter name" autocomplete="off">
-        <input type="text" name="price[]" class="form-control m-input" placeholder="Enter price" autocomplete="off" pattern="\d*" title="price should contain numbers">
+        <input type="number" name="price[]" class="form-control m-input" placeholder="Enter price" autocomplete="off" pattern="\d*" title="price should contain numbers">
                     <input type="number" name="quantity[]" class="form-control m-input" placeholder="Enter quantity" autocomplete="off" pattern="\d*" title="quantity should contain numbers">`;
         html += '<div class="input-group-append">';
         html += '<button id="removeRow" type="button" class="btn btn-danger">Remove</button>';
