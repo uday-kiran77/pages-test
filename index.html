@@ -4,83 +4,125 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+
     <title>Document</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <style>
-      @media print {
-    html, body {
-       display: none;  /* hide whole page */
-    }
-}  
-    </style>
 </head>
-<body>
-    <h1>heeeeeeeee</h1>
-    <h1>heeeeeeeee</h1>
-    <h1>heeeeeeeee</h1>
-    <h1>heeeeeeeee</h1>
-    <h1>heeeeeeeee</h1>
-    <h1>heeeeeeeee</h1>
-    <h1>heeeeeeeee</h1>
-    <h1>heeeeeeeee</h1>
-    <h1>heeeeeeeee</h1>
-    <h1>heeeeeeeee</h1>
-    <h1>heeeeeeeee</h1>
-    <h1>heeeeeeeee</h1>
-    <h1>heeeeeeeee</h1>
-    <h1>heeeeeeeee</h1>
-    <h1>heeeeeeeee</h1>
-    <h1>heeeeeeeee</h1>
-    <h1>heeeeeeeee</h1>
-    <h1>heeeeeeeee</h1>
-    <h1>heeeeeeeee</h1>
-    <h1>heeeeeeeee</h1>
-    <h1>heeeeeeeee</h1>
-    <h1>heeeeeeeee</h1>
-    <h1>heeeeeeeee</h1>
-    <h1>heeeeeeeee</h1>
-    <h1>heeeeeeeee</h1>
-    <h1>heeeeeeeee</h1>
-    <h1>heeeeeeeee</h1>
-    <h1>heeeeeeeee</h1>
-    <h1>heeeeeeeee</h1>
-    <h1>heeeeeeeee</h1>
-    <h1>heeeeeeeee</h1>
-    <script>
+<body>  
+   <form method="post" action="">
+    <div class="row">
+        <div class="col-lg-12">
+            <div id="inputFormRow">
+                <div class="input-group mb-3">
+                    <input type="text" name="itemname[]" class="form-control m-input" placeholder="Enter name" autocomplete="off" >
+                    <input type="text" name="price[]" class="form-control m-input" placeholder="Enter price" autocomplete="off" pattern="\d*" title="price should contain numbers">
+                    <input type="number" name="quantity[]" class="form-control m-input" placeholder="Enter quantity" autocomplete="off" pattern="\d*" title="quantity should contain numbers">
+                    <div class="input-group-append">                
+                    </div>
+                </div>
+            </div>
+
+            <div id="newRow"></div>
+            <button id="addRow" type="button" class="btn btn-info">Add Row</button>
+        </div>
+    </div>
+
+    <button type="submit">submit</button>
+</form>
+   
+<p></p>
+<button id="displayValues">show</button>
+
+<script type="text/javascript">
+    // add row
+        var itemName = [];   
+        var prices=[];
+        var quantity=[];
+    $("#addRow").click(function () {
+        var html = '';
+        html += '<div id="inputFormRow">';
+        html += '<div class="input-group mb-3">';
+        html += ` <input type="text" name="itemname[]" class="form-control m-input" placeholder="Enter name" autocomplete="off">
+        <input type="text" name="price[]" class="form-control m-input" placeholder="Enter price" autocomplete="off" pattern="\d*" title="price should contain numbers">
+                    <input type="number" name="quantity[]" class="form-control m-input" placeholder="Enter quantity" autocomplete="off" pattern="\d*" title="quantity should contain numbers">`;
+        html += '<div class="input-group-append">';
+        html += '<button id="removeRow" type="button" class="btn btn-danger">Remove</button>';
+        html += '</div>';
+        html += '</div>';
+
+        $('#newRow').append(html);
+    });
+
+    // remove row
+    $(document).on('click', '#removeRow', function () {
+        $(this).closest('#inputFormRow').remove();
+    });
+    
+    document.querySelector('form').addEventListener('submit',(e)=>{
+        e.preventDefault()
+        let error=[]
+        $('input[name^=itemname]').each(function(){
+            if($(this).val()==""){
+                error.push("Empty name field(s)")
+            }
+            itemName.push($(this).val());
+        }); 
+        $('input[name^=price]').each(function(){
+            if($(this).val()==""){
+                error.push("Empty Price field(s)")
+
+            }
+           
+            prices.push($(this).val());
+        }); 
+        $('input[name^=quantity]').each(function(){
+            if($(this).val()==""){
+                error.push("Empty Quantity field(s)")
+
+            }
+            quantity.push($(this).val());
+        });
+        if(error.length===0){
+            var final=arrange(itemName,prices,quantity)
+        console.log(final)
+        document.querySelector('p').innerHTML=final
+        }
+        else{
+            itemName = [];   
+            prices=[];
+            quantity=[];
+            console.log(error)
+
+        }
+       
+    })
+    
+    document.querySelector('#displayValues').addEventListener('click',(items)=>{
+        console.log(items.itemName)
+    })
+
+    function arrange(itemNames,prices,quantitys){
+        const arr=[]
+        var obj={}
+        const count=itemNames.length
+
+        for(let i=0;i<count;i++){
+            obj.name=itemNames[i]
+            obj.price=prices[i]
+            obj.quantity=quantitys[i]
+            // console.log(obj)
+            arr.push(obj)
+            obj={}
+        }
+        // console.log(arr)
+        return arr;
+            
+    }
+
+
+      
+</script>
+
   
-  var isNS = (navigator.appName == "Netscape") ? 1 : 0;
-
-if(navigator.appName == "Netscape") document.captureEvents(Event.MOUSEDOWN||Event.MOUSEUP);
-
-function mischandler(){
-return false;
-}
-
-function mousehandler(e){
-var myevent = (isNS) ? e : event;
-var eventbutton = (isNS) ? myevent.which : myevent.button;
-if((eventbutton==2)||(eventbutton==3)) return false;
-}
-document.oncontextmenu = mischandler;
-document.onmousedown = mousehandler;
-document.onmouseup = mousehandler;
-var isCtrl = false;
-document.onkeyup=function(e)
-{
-if(e.which == 17)
-isCtrl=false;
-}
-
-document.onkeydown=function(e)
-{
-if(e.which == 17)
-isCtrl=true;
-if(((e.which == 85) || (e.which == 117) || (e.which == 65) || (e.which == 97) || (e.which == 67) || (e.which == 99)) && isCtrl == true)
-{
-// alert(‘Keyboard shortcuts are cool!’);
-return false;
-}
-}
-    </script>
 </body>
 </html>
