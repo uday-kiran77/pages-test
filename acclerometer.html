@@ -8,14 +8,23 @@
   </head>
   <body>
     <script>
-      let acl = new Accelerometer({ frequency: 60 });
-      acl.addEventListener("reading", () => {
-        console.log("Acceleration along the X-axis " + acl.x);
-        console.log("Acceleration along the Y-axis " + acl.y);
-        console.log("Acceleration along the Z-axis " + acl.z);
-      });
+     if (window.DeviceOrientationEvent) {
+    window.addEventListener("deviceorientation", function(event) {
+        // alpha: rotation around z-axis
+        var rotateDegrees = event.alpha;
+        // gamma: left to right
+        var leftToRight = event.gamma;
+        // beta: front back motion
+        var frontToBack = event.beta;
 
-      acl.start();
+        handleOrientationEvent(frontToBack, leftToRight, rotateDegrees);
+    }, true);
+}
+
+var handleOrientationEvent = function(frontToBack, leftToRight, rotateDegrees) {
+    // do something amazing
+  console.log(frontToBack, leftToRight, rotateDegrees)
+};
     </script>
   </body>
 </html>
