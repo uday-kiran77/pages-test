@@ -18,7 +18,7 @@
     <p>ACCLEROMETER XGRAVITY VALUE</p>
     <p id="value"></p>
     <script>
-      window.addEventListener("devicemotion", handleMotion);
+      setInterval(window.addEventListener("devicemotion", handleMotion), 1000);
 
       function handleMotion(event) {
         document.getElementById("value").innerText =
